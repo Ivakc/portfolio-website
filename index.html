@@ -1,240 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<meta name="description" content="Home page for Anna Gilhespy children's portrait artist">
-	<meta name="keywords"
-		content="Portrait, artist, portrait artist, artist amsterdam, custom, drawing, painting, custom drawing, custom painting, custom portrait, children, kids, child portrait, custom portrait">
-	<meta name="author" content="Anna Gilhespy">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon_32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon_16x16.png">
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	<link rel="stylesheet" href="assets/css/style.css" />
-	<!-- fixing border problems caused by .container-fluid{width:99%} in main css file, which was used on all other pages to fix overflow -->
-	<link rel="stylesheet" href="assets/css/overflowfix.css" />
-	<title>Home | Iva K.C Visual Artist NEPAL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elara Voss — Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0A0A0A;
+  --white:#F5F5F0;
+  --lime:#C8FF00;
+  --orange:#FF4D1C;
+  --violet:#7B2FFF;
+  --pink:#FF2D78;
+  --blue:#00C2FF;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Space Mono',monospace;overflow-x:hidden;cursor:none}
+
+.cursor{position:fixed;width:12px;height:12px;background:var(--lime);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:background 0.2s;mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--lime);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s;mix-blend-mode:difference}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(10,10,10,0.92);backdrop-filter:blur(12px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--lime)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,245,240,0.45);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--lime)}
+
+#hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:7rem 3rem 3rem;position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(8rem,18vw,18rem);letter-spacing:-0.02em;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;user-select:none}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;position:relative;z-index:2}
+.hero-tag{display:inline-block;background:var(--lime);color:var(--black);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.35rem 0.9rem;margin-bottom:1.5rem}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,9vw,8rem);line-height:0.92;letter-spacing:0.02em}
+.hero-name .stroke{-webkit-text-stroke:1px var(--white);color:transparent}
+.hero-name .filled{color:var(--white)}
+.hero-name .accent{color:var(--orange)}
+.hero-sub{font-size:0.75rem;line-height:1.9;color:rgba(245,245,240,0.5);max-width:340px;margin-top:1.5rem}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.5rem}
+.hero-visual{width:100%;max-width:380px;aspect-ratio:3/4;overflow:hidden}
+.hero-visual svg{width:100%;height:100%}
+.hero-cta{display:inline-flex;align-items:center;gap:0.75rem;background:var(--lime);color:var(--black);font-family:'Space Mono',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2rem;text-decoration:none;transition:background 0.2s,transform 0.2s}
+.hero-cta:hover{background:var(--orange);color:var(--white);transform:translateX(-4px)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;position:relative;z-index:2}
+.hero-scroll{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,240,0.3);display:flex;align-items:center;gap:1rem}
+.scroll-dots{display:flex;gap:4px}
+.dot{width:4px;height:4px;border-radius:50%;background:rgba(245,245,240,0.15)}
+.dot.active{background:var(--lime)}
+.hero-counter{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:rgba(245,245,240,0.2)}
+.hero-counter span{color:var(--lime)}
+
+.marquee-strip{border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);padding:0.9rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-block;animation:marquee 20s linear infinite;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.15em}
+.marquee-inner span{margin:0 1.5rem;color:rgba(245,245,240,0.2)}
+.marquee-inner .hi{color:var(--lime)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+#works{padding:5rem 3rem}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.section-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,240,0.3);margin-bottom:0.75rem}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.04em;line-height:1}
+.section-title em{font-style:normal;-webkit-text-stroke:1px var(--white);color:transparent}
+.view-all{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--lime);text-decoration:none;border-bottom:1px solid var(--lime);padding-bottom:2px;transition:color 0.2s,border-color 0.2s}
+.view-all:hover{color:var(--orange);border-color:var(--orange)}
+
+.works-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.work-card{position:relative;overflow:hidden;cursor:none}
+.work-card:nth-child(1){grid-column:1/5;aspect-ratio:1}
+.work-card:nth-child(2){grid-column:5/9;aspect-ratio:1}
+.work-card:nth-child(3){grid-column:9/13;grid-row:1/3}
+.work-card:nth-child(4){grid-column:1/7;grid-row:2;aspect-ratio:16/7}
+.work-card:nth-child(5){grid-column:7/9;grid-row:2;aspect-ratio:1}
+.work-card svg{width:100%;height:100%;display:block}
+.work-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;background:linear-gradient(to top,rgba(10,10,10,0.95),transparent);transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.work-card:hover .work-info{transform:translateY(0)}
+.work-num{font-size:0.6rem;letter-spacing:0.2em;color:var(--lime);margin-bottom:0.25rem}
+.work-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.06em;color:var(--white)}
+.work-tag{font-size:0.6rem;letter-spacing:0.15em;color:rgba(245,245,240,0.45);text-transform:uppercase}
+.work-accent-line{position:absolute;top:0;left:0;width:3px;height:0;transition:height 0.4s cubic-bezier(0.16,1,0.3,1)}
+.work-card:hover .work-accent-line{height:100%}
+.c1 .work-accent-line{background:var(--lime)}
+.c2 .work-accent-line{background:var(--orange)}
+.c3 .work-accent-line{background:var(--violet)}
+.c4 .work-accent-line{background:var(--pink)}
+.c5 .work-accent-line{background:var(--blue)}
+
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,0.08);margin:0 3rem}
+.stat-item{padding:2.5rem 2rem;border-right:1px solid rgba(255,255,255,0.08)}
+.stat-item:last-child{border-right:none}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:0.04em;line-height:1}
+.stat-n .unit{font-size:1.5rem;color:var(--lime)}
+.stat-l{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,245,240,0.3);margin-top:0.4rem}
+
+#featured{display:grid;grid-template-columns:1fr 1fr;margin:5rem 3rem;border:1px solid rgba(255,255,255,0.08)}
+.feat-visual{position:relative;overflow:hidden;aspect-ratio:1;border-right:1px solid rgba(255,255,255,0.08)}
+.feat-visual svg{width:100%;height:100%}
+.feat-badge{position:absolute;top:1.5rem;left:1.5rem;background:var(--orange);color:var(--white);font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.8rem}
+.feat-content{padding:3rem;display:flex;flex-direction:column;justify-content:space-between}
+.feat-year{font-size:0.65rem;letter-spacing:0.2em;color:var(--violet);margin-bottom:1rem}
+.feat-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,4vw,3.5rem);line-height:1;letter-spacing:0.04em;margin-bottom:1.5rem}
+.feat-desc{font-size:0.78rem;line-height:2;color:rgba(245,245,240,0.5);max-width:340px}
+.feat-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;margin-top:2rem}
+.feat-tag{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);padding:0.3rem 0.75rem;color:rgba(245,245,240,0.4)}
+.feat-link{display:inline-flex;align-items:center;gap:0.75rem;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--black);background:var(--white);padding:0.85rem 1.75rem;text-decoration:none;transition:background 0.2s,color 0.2s}
+.feat-link:hover{background:var(--lime)}
+
+#process{padding:5rem 3rem;border-top:1px solid rgba(255,255,255,0.08)}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:3rem}
+.process-card{background:rgba(255,255,255,0.03);padding:2rem 1.5rem;border-top:3px solid rgba(255,255,255,0.08);transition:border-color 0.3s,background 0.3s}
+.process-card:hover{background:rgba(255,255,255,0.06)}
+.pc1:hover{border-color:var(--lime)}
+.pc2:hover{border-color:var(--orange)}
+.pc3:hover{border-color:var(--violet)}
+.pc4:hover{border-color:var(--pink)}
+.process-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:0.06em;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:1.5rem}
+.process-title{font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem}
+.process-desc{font-size:0.75rem;line-height:1.9;color:rgba(245,245,240,0.4)}
+
+#contact{margin:5rem 3rem;background:var(--lime);padding:4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem}
+.contact-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(10,10,10,0.4);margin-bottom:1rem}
+.contact-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.04em;line-height:1;color:var(--black)}
+.contact-sub{font-size:0.78rem;line-height:1.9;color:rgba(10,10,10,0.5);margin-top:1rem;max-width:400px}
+.contact-right{text-align:right}
+.contact-email{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.08em;color:var(--black);text-decoration:none;border-bottom:2px solid rgba(10,10,10,0.25);padding-bottom:4px;display:block;margin-bottom:1.5rem;transition:border-color 0.2s}
+.contact-email:hover{border-color:var(--black)}
+.contact-btn{display:inline-block;background:var(--black);color:var(--lime);font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:1rem 2rem;text-decoration:none;transition:background 0.2s,color 0.2s}
+.contact-btn:hover{background:var(--orange);color:var(--white)}
+
+footer{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;border-top:1px solid rgba(255,255,255,0.08);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,245,240,0.2)}
+.footer-right{display:flex;gap:2rem}
+.footer-right a{color:rgba(245,245,240,0.2);text-decoration:none;transition:color 0.2s}
+.footer-right a:hover{color:var(--lime)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
+</style>
 </head>
-
 <body>
-	<!-- LOGO AND NAV BAR -->
-	<nav class="navbar navbar-expand-md navbar-light fixed-top home-navbar">
 
-		<!-- LOGO -->
-		<a class="navbar-brand mr-1" href="index.html">
-			<img src="assets/images/logo.gif" height="40" alt="AG logo" title="AG logo">
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
 
-		<!-- NAV BAR LINKS -->
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav ml-auto text-uppercase">
-				<li class="nav-item">
-					<a class="nav-link active" href="index.html">Home<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="about.html">About</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="gallery.html">Gallery</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="pricing.html">Pricing</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="order.html">How to Order</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="contact.html">Contact</a>
-				</li>
-			</ul>
-			<!-- REQUEST QUOTE BUTTON -->
-			<a class="btn btn-info text-uppercase ml-md-3" href="contact.html">Request Quote</a>
-		</div>
-	</nav>
+<nav>
+  <a href="#" class="nav-logo">Elara<span>.</span>Voss</a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#featured">Featured</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-	<!-- FULL WIDTH HERO RESPONSIVE VIDEO/IMAGE -->
-	<!-- Video only active on desktop view, to save people from unwelcome data useage -->
-	<div class="video-wrapper d-none d-lg-block">
-		<iframe class="video"
-			src="https://player.vimeo.com/video/317180428?background=1&muted=1&autoplay=1&loop=1&title=0&byline=0&portrait=0">
-		</iframe>
-		<div class="container-fluid video-overlay">
-			<div class="row">
-				<div class="col-12 text-white">
-					<h1>Iva K.C.</h1>
-					<h3 class="fontchange-sm">Visual Artist</h3>
-					<p> art </p>
-				</div>
-			</div>
-		</div>
-		<!--END overlay-->
-	</div>
-	<!--END video element-->
+<section id="hero">
+  <div class="hero-bg-text">SCULPTOR</div>
+  <div class="hero-content">
+    <div class="hero-left reveal">
+      <div class="hero-tag">Mixed Media &amp; Sculpture</div>
+      <h1 class="hero-name">
+        <div class="filled">ELARA</div>
+        <div class="stroke">VOSS</div>
+        <div class="accent">STUDIO</div>
+      </h1>
+      <p class="hero-sub">Work that refuses to be quiet. Form built from tension, material, and the things between — clay, wire, found objects, and time.</p>
+    </div>
+    <div class="hero-right reveal" style="transition-delay:0.12s">
+      <div class="hero-visual">
+        <svg viewBox="0 0 380 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="380" height="500" fill="#161616"/>
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7B2FFF" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="380" height="500" fill="url(#hg)"/>
+          <ellipse cx="190" cy="230" rx="130" ry="160" fill="#C8FF00" opacity="0.07"/>
+          <rect x="60" y="80" width="90" height="310" rx="2" fill="#C8FF00" opacity="0.12"/>
+          <rect x="220" y="140" width="90" height="250" rx="2" fill="#FF4D1C" opacity="0.18"/>
+          <ellipse cx="190" cy="220" rx="65" ry="80" fill="#7B2FFF" opacity="0.3"/>
+          <circle cx="300" cy="100" r="40" fill="#C8FF00" opacity="0.15"/>
+          <circle cx="300" cy="100" r="18" fill="#C8FF00" opacity="0.35"/>
+          <line x1="60" y1="400" x2="320" y2="400" stroke="#C8FF00" stroke-width="1.5" opacity="0.5"/>
+          <rect x="155" y="360" width="70" height="8" rx="1" fill="#C8FF00" opacity="0.4"/>
+          <circle cx="190" cy="200" r="8" fill="#C8FF00" opacity="0.9"/>
+        </svg>
+      </div>
+      <a href="#works" class="hero-cta">View Portfolio →</a>
+    </div>
+  </div>
+  <div class="hero-bottom reveal" style="transition-delay:0.22s">
+    <div class="hero-scroll">
+      <div class="scroll-dots">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      Scroll to explore
+    </div>
+    <div class="hero-counter"><span>01</span> / 06</div>
+  </div>
+</section>
 
-	<!-- Static image replaces video on mobile devices, to save data usage -->
-	<div class="container-fluid p-0 m-0 d-lg-none">
-		<div class="row p-0 m-0">
-			<div class="col-12 p-0 m-0">
-				<figure class="special-hero-home" title="Black and white pencil drawing portrait of a young girl">
-				</figure>
-			</div>
-			<div class="container-fluid hero-home-overlay">
-				<div class="row">
-					<div class="col-12 text-white">
-						<h1>Iva K.C.</h1>
-						<h3 class="fontchange-sm">Visual Artist</h3>
-						<p>Treasure your precious moments forever</p>
-					</div>
-				</div>
-			</div>
-			<!--END overlay-->
-		</div>
-	</div>
-	<!--END image element -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="hi">Mixed Media</span><span>·</span><span>Sculpture</span><span>·</span><span class="hi">Found Objects</span><span>·</span><span>Clay</span><span>·</span><span class="hi">Wire</span><span>·</span><span>Resin</span><span>·</span><span class="hi">Form &amp; Tension</span><span>·</span><span>Material Dialogue</span><span>·</span>
+    <span class="hi">Mixed Media</span><span>·</span><span>Sculpture</span><span>·</span><span class="hi">Found Objects</span><span>·</span><span>Clay</span><span>·</span><span class="hi">Wire</span><span>·</span><span>Resin</span><span>·</span><span class="hi">Form &amp; Tension</span><span>·</span><span>Material Dialogue</span><span>·</span>
+  </div>
+</div>
 
+<section id="works">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Selected Works</p>
+      <h2 class="section-title">THE <em>GALLERY</em></h2>
+    </div>
+    <a href="#contact" class="view-all">Inquire about works →</a>
+  </div>
+  <div class="works-grid reveal" style="transition-delay:0.1s">
+    <div class="work-card c1" style="background:#111">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="300" fill="#111"/>
+        <ellipse cx="150" cy="150" rx="100" ry="80" fill="#C8FF00" opacity="0.1"/>
+        <rect x="80" y="60" width="50" height="200" rx="2" fill="#C8FF00" opacity="0.2"/>
+        <ellipse cx="150" cy="150" rx="45" ry="55" fill="#C8FF00" opacity="0.08"/>
+        <circle cx="220" cy="80" r="25" fill="#C8FF00" opacity="0.3"/>
+        <line x1="60" y1="260" x2="240" y2="260" stroke="#C8FF00" stroke-width="1" opacity="0.4"/>
+      </svg>
+      <div class="work-accent-line"></div>
+      <div class="work-info"><p class="work-num">001</p><p class="work-title">Sediment I</p><p class="work-tag">Clay &amp; Oxide · 2023</p></div>
+    </div>
+    <div class="work-card c2" style="background:#120A06">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="300" fill="#120A06"/>
+        <polygon points="150,30 260,240 40,240" fill="#FF4D1C" opacity="0.25"/>
+        <polygon points="150,70 230,220 70,220" fill="#FF4D1C" opacity="0.15"/>
+        <circle cx="150" cy="165" r="45" fill="#FF2D78" opacity="0.18"/>
+        <line x1="40" y1="265" x2="260" y2="265" stroke="#FF4D1C" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <div class="work-accent-line"></div>
+      <div class="work-info"><p class="work-num">002</p><p class="work-title">Threshold</p><p class="work-tag">Wire &amp; Resin · 2023</p></div>
+    </div>
+    <div class="work-card c3" style="background:#0D0816">
+      <svg viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="600" fill="#0D0816"/>
+        <rect x="90" y="60" width="120" height="450" rx="60" fill="#7B2FFF" opacity="0.3"/>
+        <rect x="110" y="80" width="80" height="410" rx="40" fill="#7B2FFF" opacity="0.2"/>
+        <rect x="125" y="100" width="50" height="370" rx="25" fill="#C8FF00" opacity="0.12"/>
+        <circle cx="150" cy="300" r="20" fill="#C8FF00" opacity="0.6"/>
+        <line x1="60" y1="530" x2="240" y2="530" stroke="#7B2FFF" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <div class="work-accent-line"></div>
+      <div class="work-info"><p class="work-num">003</p><p class="work-title">Column, Unfinished</p><p class="work-tag">Stone &amp; Paper · 2022</p></div>
+    </div>
+    <div class="work-card c4" style="background:#130610">
+      <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="250" fill="#130610"/>
+        <rect x="0" y="80" width="600" height="90" fill="#FF2D78" opacity="0.08"/>
+        <ellipse cx="130" cy="125" rx="55" ry="40" fill="#FF2D78" opacity="0.35"/>
+        <ellipse cx="300" cy="125" rx="70" ry="45" fill="#FF4D1C" opacity="0.3"/>
+        <ellipse cx="460" cy="125" rx="50" ry="35" fill="#FF2D78" opacity="0.25"/>
+        <line x1="0" y1="210" x2="600" y2="210" stroke="#FF2D78" stroke-width="1" opacity="0.3"/>
+      </svg>
+      <div class="work-accent-line"></div>
+      <div class="work-info"><p class="work-num">004</p><p class="work-title">Archive — Three Vessels</p><p class="work-tag">Found Objects · 2024</p></div>
+    </div>
+    <div class="work-card c5" style="background:#02080D">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#02080D"/>
+        <line x1="10" y1="10" x2="190" y2="190" stroke="#00C2FF" stroke-width="1.5" opacity="0.5"/>
+        <line x1="190" y1="10" x2="10" y2="190" stroke="#00C2FF" stroke-width="1" opacity="0.3"/>
+        <rect x="60" y="60" width="80" height="80" fill="#00C2FF" opacity="0.1"/>
+        <circle cx="100" cy="100" r="22" fill="#00C2FF" opacity="0.35"/>
+        <circle cx="100" cy="100" r="8" fill="#C8FF00" opacity="0.7"/>
+      </svg>
+      <div class="work-accent-line"></div>
+      <div class="work-info"><p class="work-num">005</p><p class="work-title">Intersection</p><p class="work-tag">Mixed Media · 2024</p></div>
+    </div>
+  </div>
+</section>
 
-	<!-- MAIN CONTENT OF HOME PAGE -->
-	<main>
+<div class="stats-bar reveal">
+  <div class="stat-item"><div class="stat-n">12<span class="unit">+</span></div><div class="stat-l">Years Practice</div></div>
+  <div class="stat-item"><div class="stat-n">34</div><div class="stat-l">Exhibitions</div></div>
+  <div class="stat-item"><div class="stat-n">9</div><div class="stat-l">Countries</div></div>
+  <div class="stat-item"><div class="stat-n">80<span class="unit">+</span></div><div class="stat-l">Works Created</div></div>
+</div>
 
-		<!-- SALES PITCH -->
-		<section class="container-fluid">
-			<div class="row justify-content-center my-5 text-center">
-				<div class="col-12 p-emphasis">
-					<h2 class="mb-3">Children grow up so fast</h2>
-					<p>In the rush, it’s easy to forget the way they used to be.</p>
-					<p>I use traditional methods to make timeless portraits from your photographs.</p>
-					<p>My pencil drawings and oil paintings are made in full consultation with you, and will last for
-						generations.</p>
-				</div>
-			</div>
-		</section>
+<div id="featured" class="reveal" style="margin-top:5rem">
+  <div class="feat-visual">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="500" fill="#111"/>
+      <ellipse cx="250" cy="250" rx="200" ry="160" fill="#C8FF00" opacity="0.07"/>
+      <rect x="100" y="80" width="120" height="340" rx="4" fill="#C8FF00" opacity="0.15"/>
+      <rect x="280" y="130" width="120" height="290" rx="4" fill="#FF4D1C" opacity="0.2"/>
+      <ellipse cx="250" cy="250" rx="90" ry="110" fill="#7B2FFF" opacity="0.25"/>
+      <circle cx="380" cy="120" r="55" fill="#C8FF00" opacity="0.15"/>
+      <circle cx="380" cy="120" r="25" fill="#C8FF00" opacity="0.4"/>
+      <line x1="80" y1="420" x2="420" y2="420" stroke="#C8FF00" stroke-width="2" opacity="0.4"/>
+    </svg>
+    <div class="feat-badge">Featured Work</div>
+  </div>
+  <div class="feat-content">
+    <div>
+      <p class="feat-year">2024 — ONGOING</p>
+      <h3 class="feat-title">DEEP STRATUM<br>SERIES</h3>
+      <p class="feat-desc">An ongoing series exploring geological time through accumulation of industrial and organic materials. Each piece represents a distinct layer — memory compressed into form.</p>
+      <div class="feat-tags">
+        <span class="feat-tag">Clay</span>
+        <span class="feat-tag">Steel Wire</span>
+        <span class="feat-tag">Found Stone</span>
+        <span class="feat-tag">Oxide</span>
+        <span class="feat-tag">Series of 7</span>
+      </div>
+    </div>
+    <a href="mailto:hello@elaravoss.com" class="feat-link">Inquire about this work →</a>
+  </div>
+</div>
 
-		<!-- TESTIMONIALS -->
-		<div id="testimonialsHero">
-			<div class="hero-overlay">
-				<section class="container-fluid testimonials text-center">
-					<div class="row">
-						<div class="col my-3">
-							<h3>What my Customers Say...</h3>
-						</div>
-					</div>
-					<div class="row justify-content-around">
-						<div class="quote col-sm-12 col-md-5 col-xl-3">
-							<blockquote>
-								<p>Anna gave me great advice on a suitable photo for my daughter's portrait, met the
-									deadline
-									and even delivered the final product directly to my door, but most importantly, she
-									created
-									a unique drawing of my daughter which really reflects her personality. We've had
-									tonnes
-									of
-									compliments
-									from friends and adoring family members.</p>
-								<footer>
-									— <cite>Lucie, Amsterdam</cite>
-								</footer>
-							</blockquote>
-						</div>
-						<div class="quote col-sm-12 col-md-5 col-xl-3">
-							<blockquote>
-								<p>When I saw a sample of Anna’s work. WOW! It took my breath away.
-									When trying to think of a special and unique gift for my partner, she automatically
-									came
-									to
-									mind.
-									I couldn’t have asked for a better reaction on his face when he saw the
-									sketch for the first time. It now has a very proud place in our home and we love
-									showing
-									it
-									off!</p>
-								<footer>
-									— <cite>Elke, Amstelveen</cite>
-								</footer>
-							</blockquote>
-						</div>
-						<div class="quote col-sm-12 col-md-8 col-xl-3">
-							<blockquote>
-								<p>Not only was the artwork spectacular. The delivery was amazingly quick given that it
-									was
-									ordered during the Christmas rush and Anna went out of her way to deliver some
-									extra,
-									specially requested products which she had to source for me as well. My husband was
-									delighted
-									with his gift.</p>
-								<footer>
-									— <cite>Lubhu, Nepal</cite>
-								</footer>
-							</blockquote>
-						</div>
-					</div>
-				</section>
+<section id="process">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">How I Work</p>
+      <h2 class="section-title">THE <em>PROCESS</em></h2>
+    </div>
+  </div>
+  <div class="process-grid reveal" style="transition-delay:0.1s">
+    <div class="process-card pc1"><div class="process-num">01</div><p class="process-title">Gather</p><p class="process-desc">Collecting fragments — physical, archival, experiential — that orbit an idea before it has a name.</p></div>
+    <div class="process-card pc2"><div class="process-num">02</div><p class="process-title">Dialogue</p><p class="process-desc">Letting clay, wire, textile, and found objects respond to each other in small studies and deliberate failures.</p></div>
+    <div class="process-card pc3"><div class="process-num">03</div><p class="process-title">Resolve</p><p class="process-desc">Building toward a final form that holds both intention and accident in tension.</p></div>
+    <div class="process-card pc4"><div class="process-num">04</div><p class="process-title">Place</p><p class="process-desc">Working with collectors and curators on how each piece inhabits a space over time.</p></div>
+  </div>
+</section>
 
-				<!-- BUTTON: VIEW PORTFOLIO -->
-				<div class="container-fluid">
-					<div class="row text-center">
-						<div class="col-12">
-							<a class="btn btn-lg btn-info mt-5" href="gallery.html">VIEW PORTFOLIO</a>
-						</div>
-					</div>
-				</div>
-			</div>
+<section id="contact">
+  <div class="contact-left reveal">
+    <p class="contact-label">Get in Touch</p>
+    <h2 class="contact-heading">LET'S BUILD<br>SOMETHING RAW</h2>
+    <p class="contact-sub">Available for commissions, exhibitions, and residencies. Collectors and curators welcome.</p>
+  </div>
+  <div class="contact-right reveal" style="transition-delay:0.1s">
+    <a href="mailto:hello@elaravoss.com" class="contact-email">hello@elaravoss.com</a>
+    <a href="mailto:hello@elaravoss.com" class="contact-btn">Send a message →</a>
+  </div>
+</section>
 
-		</div>
+<footer>
+  <span>&copy; 2024 Elara Voss Studio</span>
+  <div class="footer-right">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Press</a>
+  </div>
+</footer>
 
-	</main>
-
-	<!-- FOOTER -->
-	<footer class="page-footer bg-secondary text-white">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 text-center text-shadow mb-4">
-						<a class="footer-nav" href="index.html">Home</a>
-						<a class="footer-nav" href="about.html">About</a>
-						<a class="footer-nav" href="gallery.html">Portfolio</a>
-						<a class="footer-nav" href="pricing.html">Pricing</a>
-						<a class="footer-nav" href="order.html">How to Order</a>
-						<a class="footer-nav" href="contact.html">Contact</a>
-				</div>
-				<div class="col-12 py-3">
-					<!-- SOCIAL ICONS/LINKS -->
-					<div class="mb-1 flex-centre text-center social-icon-shadow">
-						<a class="ic-fb" href="https://www.facebook.com/iva.kc.2025" target="_blank"
-							aria-label="Find me on Facebook" rel="noopener">
-							<i class="fab fa-facebook fa-lg mr-md-5 mr-3 fa-2x"></i>
-						</a>
-						<a class="ic-pin" href="https://www.pinterest.com/kciva014/_profile/" target="_blank"
-							aria-label="Find me on Pinterest" rel="noopener">
-							<i class="fab fa-pinterest fa-lg mr-md-5 mr-3 fa-2x"></i>
-						</a>
-						<a class="ic-ins" href="https://www.instagram.com/iva_kc1/?hl=en" target="_blank"
-							aria-label="Find me on Instagram" rel="noopener">
-							<i class="fab fa-instagram fa-lg mr-md-5 mr-3 fa-2x"></i>
-						</a>
-					</div>
-					<!-- COPYRIGHT -->
-					<div class="text-shadow text-center py-3">
-						<small>©<span id="year"></span> Copyright: Anna Gilhespy all rights reserved</small>
-						<p class="mt-3">Website designed & developed by inSiteful</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<script src="https://player.vimeo.com/api/player.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	<script src="assets/js/main.js"></script>
-
+<script>
+  const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+  });
+  (function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim)})();
+  document.querySelectorAll('a,button,.work-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';cur.style.background='var(--orange)'});
+    el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';cur.style.background='var(--lime)'});
+  });
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}),{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
-
 </html>
